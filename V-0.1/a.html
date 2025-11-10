@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  
+  <!-- ✅ Dynamic Title -->
+  <title><data:blog.pageTitle/></title>
+
+  <!-- ✅ Description (post/page specific) -->
+  <b:if cond='data:blog.pageType == "item"'>
+    <meta name="description" expr:content='data:post.snippet'/>
+  <b:else/>
+    <meta name="description" expr:content='data:blog.metaDescription'/>
+  </b:if>
+
+  <!-- ✅ Keywords (auto or add manually for homepage) -->
+  <b:if cond='data:blog.pageType == "index"'>
+    <meta name="keywords" content="HAPROVEN, Hackathon, Project, Event, Technology, Innovation, Tech Blog, Coding"/>
+  <b:else/>
+    <meta name="keywords" expr:content='data:post.labels'/>
+  </b:if>
+
+  <!-- ✅ Robots (indexing control) -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+  <!-- ✅ Canonical -->
+  <link rel="canonical" href="<data:blog.canonicalUrl/>" />
+
+  <!-- ✅ Open Graph (for social sharing) -->
+  <meta property="og:title" expr:content='data:blog.pageTitle'/>
+  <meta property="og:site_name" expr:content='data:blog.title'/>
+  <b:if cond='data:blog.pageType == "item"'>
+    <meta property="og:type" content="article"/>
+    <meta property="og:description" expr:content='data:post.snippet'/>
+    <meta property="og:url" expr:content='data:post.url'/>
+    <b:if cond='data:post.featuredImage'>
+      <meta property="og:image" expr:content='data:post.featuredImage'/>
+    </b:if>
+  <b:else/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:description" expr:content='data:blog.metaDescription'/>
+    <meta property="og:url" expr:content='data:blog.homepageUrl'/>
+    <meta property="og:image" expr:content='data:blog.featuredImageUrl'/>
+  </b:if>
+
+  <!-- ✅ Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" expr:content='data:blog.pageTitle'/>
+  <meta name="twitter:description" expr:content='data:blog.metaDescription'/>
+  <b:if cond='data:post.featuredImage'>
+    <meta name="twitter:image" expr:content='data:post.featuredImage'/>
+  </b:if>
+
+  <!-- ✅ JSON-LD Structured Data (Google Rich Result) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HAPROVEN",
+    "url": "<data:blog.homepageUrl/>",
+    "logo": "<data:blog.homepageUrl/>/haproven-logo.png",
+    "sameAs": []
+  }
+  </script>
+
+  <!-- ✅ Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+
+  <!-- ✅ Clean Minimal CSS -->
+  <style>
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #111;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 20px;
+      border-bottom: 1px solid #eee;
+    }
+    header h1 {
+      margin: 0;
+      color: #0b74de;
+      font-size: 1.8rem;
+    }
+    main {
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 0 16px;
+    }
+    article {
+      margin-bottom: 30px;
+    }
+    article h2 {
+      color: #0b74de;
+      font-size: 1.4rem;
+    }
+    article a {
+      text-decoration: none;
+      color: inherit;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #eee;
+      color: #555;
+      font-size: 0.9rem;
+    }
+  </style>
+
+</head>
+
+<body>
+  <header>
+    <h1>HAPROVEN</h1>
+    <p>Ha — Hackathon | Pro — Project | Ven — Event<br/>The space where innovation gets proven.</p>
+  </header>
+
+  <main>
+  
+  </main>
+
+  <footer>
+    © <data:blog.year/> HAPROVEN — All Rights Reserved.
+  </footer>
+</body>
+</html>
