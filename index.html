@@ -1,61 +1,94 @@
+
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Page App</title>
+    
     <style>
         body {
             margin: 0;
-            height: 100vh;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            font-family: sans-serif;
+            height: 100vh;
+            color: #333;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(15px);
-            padding: 40px;
+        .container {
+            background: white;
+            padding: 30px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             text-align: center;
-            color: white;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            width: 250px;
+            max-width: 350px;
+            width: 90%;
         }
 
-        img {
+        .profile-img {
             width: 100px;
+            height: 100px;
             border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.5);
+            background: #eee;
+            margin-bottom: 15px;
         }
 
         button {
-            margin-top: 20px;
-            padding: 10px 25px;
-            border-radius: 25px;
+            background: #764ba2;
+            color: white;
             border: none;
-            background: white;
-            color: #764ba2;
-            font-weight: bold;
+            padding: 12px 25px;
+            border-radius: 25px;
             cursor: pointer;
-            transition: 0.3s;
+            font-size: 16px;
+            transition: transform 0.2s;
         }
 
-        button:hover {
-            transform: scale(1.05);
-            background: #f0f0f0;
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #764ba2;
+            min-height: 20px;
         }
     </style>
 </head>
 <body>
 
-    <div class="card">
-        <img src="https://via.placeholder.com/100" alt="Profile">
-        <h2>Aapka Naam</h2>
-        <p>Web Developer</p>
-        <button>Contact Me</button>
+    <div class="container">
+        <div class="profile-img" style="background: url('https://avatar.iran.liara.run/public/30') center/cover;"></div>
+        <h1>Namaste!</h1>
+        <p>Main ek Web Developer hoon jo HTML, CSS aur JS seekh raha hoon.</p>
+        
+        <button id="actionBtn">Click Me!</button>
+        
+        <p id="message"></p>
     </div>
+
+    <script>
+        const btn = document.getElementById('actionBtn');
+        const msg = document.getElementById('message');
+
+        btn.addEventListener('click', () => {
+            const hours = new Date().getHours();
+            let greeting;
+
+            if (hours < 12) greeting = "Good Morning! ☀️";
+            else if (hours < 18) greeting = "Good Afternoon! ☕";
+            else greeting = "Good Evening! 🌙";
+
+            msg.innerText = greeting + " Welcome to my page.";
+            
+            // Background color change effect
+            document.body.style.background = "linear-gradient(135deg, #2af598 0%, #009efd 100%)";
+        });
+    </script>
 
 </body>
 </html>
